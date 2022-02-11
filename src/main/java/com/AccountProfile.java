@@ -5,6 +5,8 @@ import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
+import static com.codeborne.selenide.Condition.visible;
+
 public class AccountProfile {
     public static final String PROFILE_URL = "https://stellarburgers.nomoreparties.site/account";
 
@@ -21,18 +23,18 @@ public class AccountProfile {
     private SelenideElement stellarBurgersLogo;
 
     public void constructorButtonClick(){
-        constructorButton.click();
+        constructorButton.shouldBe(visible).click();
     }
 
     public void exitButtonClick(){
-        exitButton.click();
+        exitButton.shouldBe(visible).click();
     }
 
     public boolean isProfileFieldTextVisible(){
-        return profileFieldText.shouldBe(Condition.visible).isDisplayed();
+        return profileFieldText.shouldBe(visible).isDisplayed();
     }
 
     public void stellarBurgersLogoClick(){
-        stellarBurgersLogo.click();
+        stellarBurgersLogo.shouldBe(visible).click();
     }
 }

@@ -5,6 +5,8 @@ import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
+import static com.codeborne.selenide.Condition.visible;
+
 public class LoginPage {
     public static final String LOGIN_PAGE = "https://stellarburgers.nomoreparties.site/login";
 
@@ -17,22 +19,22 @@ public class LoginPage {
     @FindBy(how = How.NAME,using = "name")
     private SelenideElement emailField;
 
-    @FindBy(how = How.NAME,using = "Пароль")
+    @FindBy(how = How.XPATH,using = ".//input[@name=\"Пароль\"]")
     private SelenideElement passwordField;
 
     @FindBy(how = How.XPATH,using = ".//button[contains(text(),'Войти')]")
     private SelenideElement logInButton;
 
     public void registerButtonClick(){
-        registerButton.scrollTo().click();
+        registerButton.shouldBe(visible).scrollTo().click();
     }
 
     public boolean toComeInIsDispayed(){
-        return toСomеInText.shouldBe(Condition.visible).isDisplayed();
+        return toСomеInText.shouldBe(visible).isDisplayed();
     }
 
     public void setPassword(String password){
-        passwordField.setValue(password);
+        passwordField.shouldBe(visible).setValue(password);
     }
 
     public void setEmail(String name){
@@ -40,6 +42,7 @@ public class LoginPage {
     }
 
     public void logInButtonClick(){
-        logInButton.scrollTo().click();
+        logInButton.shouldBe(visible).scrollTo().click();
     }
+
 }

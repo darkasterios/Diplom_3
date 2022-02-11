@@ -4,6 +4,7 @@ com\MainPage.class
 com\model\User.class
 com\RestorePasswordPage.class
 com\AccountProfile.class
+com\UserCredentials.class
 com\LoginPage.class
 com\UserDataCreating.class
 com\RegisterPage.class

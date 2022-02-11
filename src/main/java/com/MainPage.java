@@ -1,4 +1,5 @@
 package com;
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
@@ -46,11 +47,11 @@ public class MainPage {
     private SelenideElement sauceSpicyX;
 
     public void personalAreaClick(){
-        personalArea.scrollTo().click();
+        personalArea.shouldBe(visible).scrollTo().click();
     }
 
     public void logInButtonClick(){
-        logInButton.click();
+        logInButton.shouldBe(visible).click();
     }
 
     public boolean isMakeOrderButtonDispayed(){
@@ -60,10 +61,11 @@ public class MainPage {
     public void modalWindowExitButtonClick(){
         if(modalWindowExitButton.isDisplayed())
             modalWindowExitButton.click();
+        personalArea.shouldBe(visible).scrollTo();
     }
 
     public void constructorButtonClick(){
-        constructorButton.click();
+        constructorButton.shouldBe(visible).click();
     }
 
     public boolean isCreateBurgerTextVisible(){
@@ -71,15 +73,15 @@ public class MainPage {
     }
 
     public void bunsButtonClick(){
-        bunsButton.click();
+        bunsButton.shouldBe(visible).click();
     }
 
     public void saucesButtonClick(){
-        saucesButton.click();
+        saucesButton.shouldBe(visible).click();
     }
 
     public void fillingsButtonClick(){
-        fillingsButton.click();
+        fillingsButton.shouldBe(visible).click();
     }
 
     public boolean isBeefMeteoriteChopVisible(){
