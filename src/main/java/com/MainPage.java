@@ -1,6 +1,7 @@
 package com;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
@@ -21,9 +22,6 @@ public class MainPage {
 
     @FindBy(how = How.XPATH,using = ".//button[@class=\"Modal_modal__close_modified__3V5XS Modal_modal__close__TnseK\"]")
     private SelenideElement modalWindowExitButton;
-
-    @FindBy(how = How.XPATH,using = ".//p[contains(text(),'Конструктор')]")
-    private SelenideElement constructorButton;
 
     @FindBy(how = How.XPATH,using = ".//h1[contains(text(),'Соберите бургер')]")
     private SelenideElement createBurderText;
@@ -46,52 +44,59 @@ public class MainPage {
     @FindBy(how = How.XPATH,using = ".//p[contains(text(),'Соус Spicy-X')]")
     private SelenideElement sauceSpicyX;
 
+    @Step("Нажать на кнопку Личный кабинет")
     public void personalAreaClick(){
         personalArea.shouldBe(visible).scrollTo().click();
     }
 
+    @Step("Нажать на кнопку Войти")
     public void logInButtonClick(){
         logInButton.shouldBe(visible).click();
     }
 
-    public boolean isMakeOrderButtonDispayed(){
+    @Step("Кнопка Оформить заказа успешно отображается")
+    public boolean isMakeOrderButtonDisplayed(){
         return makeOrderButton.shouldBe(visible).isDisplayed();
     }
 
+    @Step("Закрыть модальное окно заказа, в случае если оно всплывает")
     public void modalWindowExitButtonClick(){
         if(modalWindowExitButton.isDisplayed())
             modalWindowExitButton.click();
         personalArea.shouldBe(visible).scrollTo();
     }
 
-    public void constructorButtonClick(){
-        constructorButton.shouldBe(visible).click();
-    }
-
+    @Step("Текст Собери бургер успешно отображается")
     public boolean isCreateBurgerTextVisible(){
         return createBurderText.shouldBe(visible).isDisplayed();
     }
 
+    @Step("Нажать на кнопку Булки")
     public void bunsButtonClick(){
         bunsButton.shouldBe(visible).click();
     }
 
+    @Step("Нажать на кнопку Соусы")
     public void saucesButtonClick(){
         saucesButton.shouldBe(visible).click();
     }
 
+    @Step("Нажать на кнопку Начинки")
     public void fillingsButtonClick(){
         fillingsButton.shouldBe(visible).click();
     }
 
+    @Step("Эллемент Говяжий метеорит (отбивная) успешно отображается")
     public boolean isBeefMeteoriteChopVisible(){
         return beefMeteoriteChop.is(visible);
     }
 
+    @Step("Эллемент Spicy-X успешно отображается")
     public boolean isSauceSpicyXVisible(){
         return sauceSpicyX.is(visible);
     }
 
+    @Step("Эллемент Флюоресцентная булка R2-D3 успешно отображается")
     public boolean isFluorescentBunVisible(){
         return fluorescentBun.is(visible);
     }

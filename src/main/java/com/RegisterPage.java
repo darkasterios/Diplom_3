@@ -2,6 +2,7 @@ package com;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
@@ -28,26 +29,32 @@ public class RegisterPage {
     @FindBy(how = How.XPATH,using = ".//a[contains(text(),'Войти')]")
     private SelenideElement logInButton;
 
+    @Step("Ввод значения в поле Имя")
     public void setName(String name){
        nameField.shouldBe(visible).setValue(name);
     }
 
+    @Step("Ввод значения в поле email")
     public void setEmailField(String email){
         emailField.shouldBe(visible).setValue(email);
     }
 
+    @Step("Ввод значения в поле пароль")
     public void setPassword(String pass){
         passwordField.shouldBe(visible).setValue(pass);
     }
 
+    @Step("Нажать на кнопку Зарегистрироваться")
     public void registerButtonClick(){
         registerButton.shouldBe(visible).scrollTo().click();
     }
 
+    @Step("Сообщение о невалидном введенном пароле успешно отображается")
     public boolean invalidPasswordMessageIsVisible(){
        return invalidPasswordMessage.shouldBe(visible).isDisplayed();
     }
 
+    @Step("Нажать на кнопку войти")
     public void logInButtonClick(){
         logInButton.click();
     }

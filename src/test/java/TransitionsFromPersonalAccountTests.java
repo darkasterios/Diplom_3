@@ -15,7 +15,6 @@ public class TransitionsFromPersonalAccountTests {
     @Test
     public void goToStellarBurgersLogoFromPersonalAreaTest() {
         MainPage mainPage = open(MainPage.BASE_URL, MainPage.class);
-        mainPage.modalWindowExitButtonClick();
         mainPage.personalAreaClick();
         AccountProfile accountProfile = open(AccountProfile.PROFILE_URL, AccountProfile.class);
         accountProfile.stellarBurgersLogoClick();
@@ -28,7 +27,6 @@ public class TransitionsFromPersonalAccountTests {
     @Test
     public void goToConstructorFromPersonalAreaTest() {
         MainPage mainPage = open(MainPage.BASE_URL, MainPage.class);
-        mainPage.modalWindowExitButtonClick();
         mainPage.personalAreaClick();
         AccountProfile accountProfile = open(AccountProfile.PROFILE_URL, AccountProfile.class);
         accountProfile.constructorButtonClick();

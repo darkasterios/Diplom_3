@@ -2,6 +2,7 @@ package com;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
@@ -25,22 +26,27 @@ public class LoginPage {
     @FindBy(how = How.XPATH,using = ".//button[contains(text(),'Войти')]")
     private SelenideElement logInButton;
 
+    @Step("Нажать на кнопку Зарегистрироваться")
     public void registerButtonClick(){
         registerButton.shouldBe(visible).scrollTo().click();
     }
 
+    @Step("Текст Вход успешно отображается")
     public boolean toComeInIsDispayed(){
         return toСomеInText.shouldBe(visible).isDisplayed();
     }
 
+    @Step("Ввод пароля в поле пароль")
     public void setPassword(String password){
         passwordField.shouldBe(visible).setValue(password);
     }
 
+    @Step("Ввод email в поле email")
     public void setEmail(String name){
         emailField.setValue(name);
     }
 
+    @Step("Нажать на кнопку Войти")
     public void logInButtonClick(){
         logInButton.shouldBe(visible).scrollTo().click();
     }

@@ -20,7 +20,7 @@ public class LoginTests {
         AccountProfile accountProfile = open(AccountProfile.PROFILE_URL, AccountProfile.class);
         accountProfile.exitButtonClick();
     }
-    
+
     @DisplayName("Авторизация пользователя по кнопке Личный кабинет")
     @Description("Авторизация пользователя.Позитивная проверка")
     @Test
@@ -31,7 +31,7 @@ public class LoginTests {
         loginPage.setEmail("Router@yandex.ru");
         loginPage.setPassword("Router");
         loginPage.logInButtonClick();
-        boolean actual = mainPage.isMakeOrderButtonDispayed();
+        boolean actual = mainPage.isMakeOrderButtonDisplayed();
         assertTrue("Авторизация по кнопке Личный кабинет не произодится", actual);
     }
 
@@ -45,7 +45,7 @@ public class LoginTests {
         loginPage.setEmail("Router@yandex.ru");
         loginPage.setPassword("Router");
         loginPage.logInButtonClick();
-        boolean actual = mainPage.isMakeOrderButtonDispayed();
+        boolean actual = mainPage.isMakeOrderButtonDisplayed();
         assertTrue("Авторизация по кнопке Войти в аккаунт не производится", actual);
     }
 
@@ -60,7 +60,7 @@ public class LoginTests {
         loginPage.setEmail("Router@yandex.ru");
         loginPage.setPassword("Router");
         loginPage.logInButtonClick();
-        boolean actual =  mainPage.isMakeOrderButtonDispayed();
+        boolean actual =  mainPage.isMakeOrderButtonDisplayed();
         assertTrue("Авторизация по кнопке Войти на странице регистрации не производится",
                 actual);
     }
@@ -76,7 +76,7 @@ public class LoginTests {
         loginPage.setEmail("Router@yandex.ru");
         loginPage.setPassword("Router");
         loginPage.logInButtonClick();
-        boolean actual = mainPage.isMakeOrderButtonDispayed();
+        boolean actual = mainPage.isMakeOrderButtonDisplayed();
         assertTrue("Авторизация по кнопке Войти на странице восстановления пароля не производится",
                 actual);
     }
