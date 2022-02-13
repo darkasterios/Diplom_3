@@ -2,11 +2,14 @@ package com;
 
 import com.model.Tokens;
 import com.model.UserRegisterResponse;
+import io.restassured.response.ValidatableResponse;
 import org.apache.commons.lang3.RandomStringUtils;
 
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.Base.BASE_URL;
+import static com.Base.getBaseSpec;
 import static io.restassured.RestAssured.given;
 
 public class UserOperations {
@@ -36,7 +39,7 @@ public class UserOperations {
 
         // отправляем запрос на регистрацию пользователя и десериализуем ответ в переменную response
         UserRegisterResponse response = given()
-                .spec(Base.getBaseSpec())
+                .spec(getBaseSpec())
                 .and()
                 .body(inputDataMap)
                 .when()
@@ -69,12 +72,29 @@ public class UserOperations {
             return;
         }
         given()
-                .spec(Base.getBaseSpec())
+                .spec(getBaseSpec())
                 .auth().oauth2(Tokens.getAccessToken())
                 .when()
                 .delete("auth/user")
                 .then()
                 .statusCode(202);
     }
+    public void deleteUser(String token){
+        given()
+                .spec(getBaseSpec())
+                .auth().oauth2(token)
+                .when()
+                .delete(BASE_URL+ "auth/user")
+                .then()
+                .statusCode(202);
+    }
 
+    public ValidatableResponse loginUser(UserCredentials user){
+        return given()
+                .spec(getBaseSpec())
+                .body(user)
+                .when()
+                .post(BASE_URL + "auth/login")
+                .then();
+    }
 }
